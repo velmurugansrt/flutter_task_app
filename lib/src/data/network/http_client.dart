@@ -24,7 +24,7 @@ class HTTPClient {
       return json.decode(response) as Map<String, dynamic>;
     } else {
       return {
-        'is_error': true,
+        'isError': 'true',
         'message': 'Unable to connect. Please Check Internet Connection'
       };
     }
@@ -52,7 +52,7 @@ class HTTPClient {
       return sResponse;
     } catch (e) {
       Map error = {
-        'is_error': true,
+        'isError': 'true',
         'message': 'Unable to connect. Please Check Internet Connection'
       };
       return json.encode(error);
@@ -79,7 +79,7 @@ class HTTPClient {
           await request.close().timeout(_requestTimeout);
       storeCookie(response.headers);
       final String sResponse = await response.transform(utf8.decoder).join();
-      print('HTTPClient Response> $sResponse');
+      // print('HTTPClient Response> $sResponse');
       return sResponse;
     } finally {
       client.close();

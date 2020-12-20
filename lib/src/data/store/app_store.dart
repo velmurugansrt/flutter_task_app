@@ -2,7 +2,7 @@ class AppStore {
   static final AppStore _appStore = AppStore._();
   factory AppStore() => _appStore;
   AppStore._() {}
-  bool _networkStatus = false;
+  bool _networkStatus = true;
   String _sessionCookie;
 
   String getSessionCookie() {

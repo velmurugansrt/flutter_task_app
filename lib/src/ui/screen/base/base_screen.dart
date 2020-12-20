@@ -121,8 +121,7 @@ abstract class BaseScreenState<Page extends BaseScreen> extends State<Page> {
                     ],
                   ),
                 ],
-              )
-              ),
+              )),
         );
       },
     );
@@ -153,6 +152,14 @@ abstract class BaseScreenState<Page extends BaseScreen> extends State<Page> {
         );
       },
     );
+  }
+
+  bool isScreenCurrent() {
+    return context != null && ModalRoute.of(context).isCurrent;
+  }
+
+  bool isScreenActive() {
+    return context != null && ModalRoute.of(context).isActive;
   }
 
   GestureDetector backButton() {

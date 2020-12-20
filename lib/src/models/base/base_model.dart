@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter/material.dart';
+
 class BaseModel {
   bool isError;
   String message;
@@ -5,13 +9,14 @@ class BaseModel {
 
   BaseModel({this.isError, this.message, this.data});
 
-  BaseModel.fromJson(Map<String, dynamic> json) {
+  BaseModel.fromJson(Map<String, dynamic> jsonData) {
+    Map json = jsonDecode(jsonData['data']);
     if (json.containsKey('is_error')) isError = json['is_error'];
 
     if (json.containsKey('message')) message = json['message'];
 
-    if (json.containsKey('data') && json['data'] != '') {
-      data = json['data'];
+    if (json.containsKey('responseData') && json['responseData'] != '') {
+      data = json['responseData'];
     }
   }
 
@@ -23,5 +28,9 @@ class BaseModel {
       data['data'] = this.data;
     }
     return data;
+  }
+
+  bool isSuccess() {
+    return isError != "false";
   }
 }

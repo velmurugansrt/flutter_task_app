@@ -26,7 +26,9 @@ AppBar commonAppbarWidget(
             icon: const Icon(
               Icons.notification_important,
             ),
-            onPressed: () => callback(AppConstants.NOTIFICATION),
+            onPressed: () => int.parse(count) > 0
+                ? callback(AppConstants.NOTIFICATION)
+                : null,
           ),
           Positioned(
             child: Container(
